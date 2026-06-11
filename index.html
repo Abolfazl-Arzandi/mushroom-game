@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>قارچ خوری</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="hud" aria-label="وضعیت بازی">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">🍄</span>
+          <div>
+            <h1>قارچ خوری</h1>
+            <p>قارچ‌های سالم را بخور، از بنفش‌ها دور بمان.</p>
+          </div>
+        </div>
+        <div class="stats">
+          <div>
+            <span>امتیاز</span>
+            <strong id="score">0</strong>
+          </div>
+          <div>
+            <span>جان</span>
+            <strong id="lives">3</strong>
+          </div>
+          <div>
+            <span>زمان</span>
+            <strong id="time">60</strong>
+          </div>
+        </div>
+        <button id="restart" type="button">شروع دوباره</button>
+      </section>
+
+      <section class="stage-wrap">
+        <canvas id="game" width="960" height="540" aria-label="صفحه بازی قارچ خوری"></canvas>
+        <div id="overlay" class="overlay is-visible">
+          <div class="panel">
+            <h2>آماده‌ای؟</h2>
+            <p>با کلیدهای جهت‌دار یا WASD حرکت کن. روی موبایل از دکمه‌های پایین استفاده کن.</p>
+            <button id="start" type="button">شروع بازی</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="touch-pad" aria-label="کنترل لمسی">
+        <button data-dir="up" aria-label="بالا">▲</button>
+        <div>
+          <button data-dir="right" aria-label="راست">▶</button>
+          <button data-dir="down" aria-label="پایین">▼</button>
+          <button data-dir="left" aria-label="چپ">◀</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

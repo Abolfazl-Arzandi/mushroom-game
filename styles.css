@@ -1,0 +1,264 @@
+:root {
+  color-scheme: dark;
+  --bg: #11140f;
+  --panel: #1a2218;
+  --panel-strong: #22301f;
+  --ink: #f5f1df;
+  --muted: #b7b29f;
+  --line: rgba(255, 255, 255, 0.14);
+  --accent: #e14d3d;
+  --accent-2: #f0c24b;
+  --safe: #74b65d;
+  --danger: #9b5dd4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(116, 182, 93, 0.26), transparent 28%),
+    linear-gradient(135deg, #11140f 0%, #222617 45%, #171326 100%);
+  color: var(--ink);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+button {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff8ed;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 140ms ease,
+    filter 140ms ease,
+    border-color 140ms ease;
+}
+
+button:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.game-shell {
+  width: min(1120px, 100%);
+  display: grid;
+  gap: 14px;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(26, 34, 24, 0.86);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: #2d3c22;
+  font-size: 28px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.brand p,
+.panel p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 82px);
+  gap: 8px;
+}
+
+.stats div {
+  min-height: 54px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-strong);
+  text-align: center;
+}
+
+.stats span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.stats strong {
+  display: block;
+  margin-top: 2px;
+  color: var(--accent-2);
+  font-size: 23px;
+  line-height: 1.1;
+}
+
+#restart,
+#start {
+  min-height: 44px;
+  padding: 0 16px;
+}
+
+.stage-wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #152015;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #152015;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 18px;
+  background: rgba(8, 12, 8, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.overlay.is-visible {
+  display: grid;
+}
+
+.panel {
+  width: min(410px, 100%);
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(26, 34, 24, 0.96);
+  text-align: center;
+}
+
+.panel h2 {
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+.panel button {
+  margin-top: 16px;
+}
+
+.touch-pad {
+  display: none;
+  justify-items: center;
+  gap: 6px;
+}
+
+.touch-pad div {
+  display: flex;
+  gap: 6px;
+}
+
+.touch-pad button {
+  width: 58px;
+  height: 48px;
+  background: #2d3c22;
+}
+
+@media (max-width: 820px) {
+  body {
+    padding: 10px;
+  }
+
+  .hud {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #restart {
+    width: 100%;
+  }
+
+  .touch-pad {
+    display: grid;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    align-items: flex-start;
+  }
+
+  .brand-mark {
+    width: 44px;
+    height: 44px;
+    font-size: 24px;
+  }
+
+  h1 {
+    font-size: 19px;
+  }
+
+  .brand p,
+  .panel p {
+    font-size: 12px;
+  }
+
+  .stats div {
+    min-height: 50px;
+    padding-inline: 6px;
+  }
+
+  .stats strong {
+    font-size: 20px;
+  }
+}
